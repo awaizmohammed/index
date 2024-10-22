@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aata - Doodh - Dahi - Oil</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Initialize cart as an empty array
+        let cart = [];
+
+        function addToCart(product) {
+            cart.push(product);
+            alert(product + ' has been added to your cart!');
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const cartCount = document.getElementById('cartCount');
+            cartCount.textContent = cart.length;
+        }
+
+        function showCart() {
+            const cartItems = cart.map(item => `<li>${item}</li>`).join('');
+            const clearButton = '<button onclick="clearCart()">Clear Cart</button>';
+            alert('Cart Items:\n' + (cart.length > 0 ? cartItems + '\n\n' + clearButton : 'Your cart is empty.'));
+        }
+
+        function clearCart() {
+            cart = []; // Reset the cart
+            updateCartCount();
+            alert('Your cart has been cleared.');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Aata - Doodh - Dahi - Oil</h1>
+        <button onclick="window.history.back();">Back</button>
+    </header>
+
+    <section class="product-list">
+        <h2>Available Products</h2>
+        <div class="product-item">
+            <img src="images/aata.jpg" alt="Aata">
+            <p>Aata</p>
+            <button onclick="addToCart('Aata')">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <img src="images/doodh.jpg" alt="Doodh">
+            <p>Doodh</p>
+            <button onclick="addToCart('Doodh')">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <img src="images/dahi.jpg" alt="Dahi">
+            <p>Dahi</p>
+            <button onclick="addToCart('Dahi')">Add to Cart</button>
+        </div>
+        <div class="product-item">
+            <img src="images/oil.jpg" alt="Oil">
+            <p>Oil</p>
+            <button onclick="addToCart('Oil')">Add to Cart</button>
+        </div>
+    </section>
+
+    <!-- Cart Icon -->
+    <div id="cartIcon" onclick="showCart()" style="position: fixed; bottom: 20px; right: 20px; cursor: pointer;">
+        🛒 <span id="cartCount">0</span>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Your App Name. All rights reserved.</p>
+        <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
